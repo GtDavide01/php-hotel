@@ -10,3 +10,12 @@ header{
     align-items: center;
     font-style: oblique ;
 }
+table{
+    border: 1px solid black ;
+}
+th{
+    text-align: center;
+}
+tr{
+    text-align: center;
+}
