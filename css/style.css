@@ -2,3 +2,11 @@
     width: 70%;
     margin: 100px auto ;
 }
+header{
+    height:100px;
+    background-color: #c7dbd2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: oblique ;
+}

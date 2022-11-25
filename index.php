@@ -68,6 +68,9 @@ $hotels = [
 </head>
 
 <body>
+    <header>
+        <h1>PHP-HOTEL</h1>
+    </header>
     <!-- MAIN -->
     <main>
         <div class="container">
@@ -91,6 +94,13 @@ $hotels = [
                     <tbody>
                         <tr>
                             <?php foreach ($thishotel as $key => $valore) {
+                                if ($key == 'parking') {
+                                    if ($valore == 'false') {
+                                        echo "Si";
+                                    } else {
+                                        echo "No";
+                                    }
+                                }
                                 echo "<td> " . $valore . "</td>";
                             }
                             ?>
