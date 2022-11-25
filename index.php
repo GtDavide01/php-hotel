@@ -68,7 +68,25 @@ $hotels = [
 </head>
 
 <body>
-
+    <!-- MAIN -->
+    <main>
+        <div class="container">
+            <ul>
+                <?php
+                // var_dump($hotels);
+                //stampo in pagine tutti gli hotel 
+                for ($i = 0; $i < count($hotels); $i++) {
+                    $thishotel = $hotels[$i];
+                    foreach ($thishotel as $key => $valore) {
+                        echo $key;
+                        echo $valore;
+                        echo "<br>";
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+    </main>
 </body>
 
 </html>
