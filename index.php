@@ -51,6 +51,7 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
+$parcheggio = $_GET["select"] ?? " ";
 ?>
 
 <!DOCTYPE html>
@@ -74,48 +75,111 @@ $hotels = [
     <!-- MAIN -->
     <main>
         <div class="container">
-
+            <form action="index.php" method="GET">
+                <select name="select" id="" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option value="all">Tutti gli hotel </option>
+                    <option value="true">Con parcheggio </option>
+                    <option value="false">Senza parcheggio </option>
+                </select>
+                <button class="btn btn-success" type="submit">FILTRA</button>
+            </form>
             <?php
-            // var_dump($hotels);
-            //stampo in pagine tutti gli hotel 
-            for ($i = 0; $i < count($hotels); $i++) {
-                $thishotel = $hotels[$i];
+            foreach ($hotels as $singlehotel) {
+                if ($parcheggio === 'all') {
             ?>
-                <table class="table  table-success table-striped">
-                    <thead>
-                        <tr>
-                            <?php foreach ($thishotel as $key => $valore) {
-                                echo "<th scope ='col'> " . $key . "</th>";
-                            }
-                            ?>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php foreach ($thishotel as $key => $valore) {
-                                if ($key == 'parking') {
-                                    if ($valore == 'false') {
-                                        $valore = "Si";
-                                    } else {
-                                        $valore = "No";
-                                    }
+                    <table class="table  table-success table-striped">
+                        <thead>
+                            <tr>
+                                <?php foreach ($singlehotel as $key => $valore) {
+                                    echo "<th scope ='col'> " . $key . "</th>";
                                 }
-                                echo "<td> " . $valore . "</td>";
-                            }
-                            ?>
-                        </tr>
-                    </tbody>
-                </table>
+                                ?>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <?php foreach ($singlehotel as $key => $valore) {
+                                    if ($key == 'parking') {
+                                        if ($valore == 'false') {
+                                            $valore = "Si";
+                                        } else {
+                                            $valore = "No";
+                                        }
+                                    }
+                                    echo "<td> " . $valore . "</td>";
+                                }
+                                ?>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <?php
+                } elseif ($parcheggio === 'true') {
+                    if ($singlehotel['parking'] === true) {
+
+                    ?>
+                        <table class="table  table-success table-striped">
+                            <thead>
+                                <tr>
+                                    <?php foreach ($singlehotel as $key => $valore) {
+                                        echo "<th scope ='col'> " . $key . "</th>";
+                                    }
+                                    ?>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <?php foreach ($singlehotel as $key => $valore) {
+                                        if ($key == 'parking') {
+                                            if ($valore == 'false') {
+                                                $valore = "Si";
+                                            } else {
+                                                $valore = "No";
+                                            }
+                                        }
+                                        echo "<td> " . $valore . "</td>";
+                                    }
+                                    ?>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    <?php }
+                } elseif ($parcheggio === 'false') {
+                    if ($singlehotel['parking'] === false) {
+                    ?>
+                        <table class="table  table-success table-striped">
+                            <thead>
+                                <tr>
+                                    <?php foreach ($singlehotel as $key => $valore) {
+                                        echo "<th scope ='col'> " . $key . "</th>";
+                                    }
+                                    ?>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <?php foreach ($singlehotel as $key => $valore) {
+                                        if ($key == 'parking') {
+                                            if ($valore == 'false') {
+                                                $valore = "Si";
+                                            } else {
+                                                $valore = "No";
+                                            }
+                                        }
+                                        echo "<td> " . $valore . "</td>";
+                                    }
+                                    ?>
+                                </tr>
+                            </tbody>
+                        </table>
             <?php
+                    }
+                }
             }
             ?>
-
-
-
-
-
-
         </div>
     </main>
 </body>
